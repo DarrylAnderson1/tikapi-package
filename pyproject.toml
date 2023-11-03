@@ -1,3 +1,18 @@
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+[project]
+name = "pytik"
+version = "0.0.1"
+authors = [{name="Darryl Anderson"}]
+description = "RouterOS V7 API client"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 2 - Pre-Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    ]
+dependencies = ["urllib3==2.0.7"]
+license = { file = "LICENSE" }
