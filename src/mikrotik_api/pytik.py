@@ -33,7 +33,7 @@ class Connector:
 
     def get(self,command:str):
         '''Returns output for the supplied command as if \"print\" was used in the terminal
-        :param command: the terminal command in routerOS eg. interface/vlan
+        :param command: the terminal command in routerOS eg. "interface/vlan"
         :type command: str
         :return: data processed by __process(response)
         :rtype: dict'''
@@ -43,7 +43,7 @@ class Connector:
         '''Returns output for the supplied command as if \"print\" was used in the terminal.
         If queries are supplied only matching data will be returned.
         If returns are supplied only the requested parameters will be returned
-        :param command: the terminal command in routerOS eg. interface/vlan
+        :param command: the terminal command in routerOS eg. "interface/vlan"
         :type command: str
         :param queries: strings to search for eg. "vlan-id=5"
         :type queries: list, optional
@@ -59,13 +59,34 @@ class Connector:
         return self.__process(self.__http.request("POST",f"{self.__url}{command}/print",body=json.dumps(data),headers=self.__auth))
 
     def set(self,command:str,id:str,data:dict):
+        '''Performs a set on the specified id for the supplied command. Updates all values provided in data.
+        See examples.py and README.md for more detail.
+        :param command: the terminal command in routerOS eg. "interface/vlan"
+        :type command: str
+        :param id: The ID value to update, provided by the API eg. "*1C7"
+        :type id: str
+        :param data: Dictionary of strings to set eg. {"name":"newname","vlan-id":"500"}
+        :type data: dict
+        :return: data processed by __process(response)
+        :rtpe: dict'''
         return self.__process(self.__http.request("PATCH",f"{self.__url}{command}/{id}",body=json.dumps(data),headers=self.__auth))
     
     def add(self,command:str,data:dict):
+        '''Adds a new entry for the supplied command with values provided in data.
+        :param command: the terminal command in routerOS eg. "interface/vlan"
+        :type command: str
+        :param data: Dictionary of strings to set, uses defaults for any values not supplied eg. {"name":"addedvlan","vlan-id":"112","interface":"ether1"}
+        :type data: dict
+        :return: data processed by __process(response)
+        :rtpe: dict'''
         return self.__process(self.__http.request("PUT",f"{self.__url}{command}",body=json.dumps(data),headers=self.__auth))
     
     def remove(self,command:str,id:str):
+        '''Removes the specified id for the supplied command.
+        :param command: the terminal command in routerOS eg. "interface/vlan"
+        :type command: str
+        :param id: The ID value to update, provided by the API eg. "*1C7"
+        :type id: str
+        :return: data processed by __process(response)
+        :rtpe: dict'''
         return self.__process(self.__http.request("DELETE",f"{self.__url}{command}/{id}",headers=self.__auth))
-    
-    def exec(self,command:str,data:dict):
-        return self.__process(self.__http.request("POST",f"{self.__url}{command}",body=json.dumps(data),headers=self.__auth))
