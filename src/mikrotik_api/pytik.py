@@ -32,7 +32,7 @@ class Connector:
         return result
 
     def get(self,command:str):
-        '''Queries all entries for the supplied command as if \"print\" was used in the terminal
+        '''Returns output for the supplied command as if \"print\" was used in the terminal
         :param command: the terminal command in routerOS eg. interface/vlan
         :type command: str
         :return: data processed by __process(response)
@@ -40,9 +40,9 @@ class Connector:
         return self.__process(self.__http.request("GET",f"{self.__url}{command}",headers=self.__auth))
     
     def search(self,command:str,queries:list=[],returns:list=[]):
-        '''Queries all entries for the supplied command as if \"print\" was used in the terminal.
-        If queries are supplied only matching data will be returned. If returns are supplied only
-        the requested parameters will be returned
+        '''Returns output for the supplied command as if \"print\" was used in the terminal.
+        If queries are supplied only matching data will be returned.
+        If returns are supplied only the requested parameters will be returned
         :param command: the terminal command in routerOS eg. interface/vlan
         :type command: str
         :param queries: strings to search for eg. "vlan-id=5"
