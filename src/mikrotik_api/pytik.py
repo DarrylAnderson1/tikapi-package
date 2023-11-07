@@ -60,7 +60,7 @@ class Connector:
 
     def set(self,command:str,id:str,data:dict):
         '''Performs a set on the specified id for the supplied command. Updates all values provided in data.
-        See examples.py and README.md for more detail.
+        See README.md for more detail.
         :param command: the terminal command in routerOS eg. "interface/vlan"
         :type command: str
         :param id: The ID value to update, provided by the API eg. "*1C7"
