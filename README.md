@@ -1,3 +1,11 @@
-#Mikrotik RESTful API
+# Mikrotik RESTful API
 
-It makes the API go. That's about it.
+Early build of a simple Mikrotik API connector for the RouterOS v7 API.
+
+## TODO:
+☑ Initial commit
+Exception handling
+Actual documentation
+Initial PyPI upload
+
+Mikrotik REST API Documentation is available in the [official docs](https://help.mikrotik.com/docs/display/ROS/REST+API)
