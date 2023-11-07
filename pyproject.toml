@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 [project]
 name = "pytik"
 version = "0.0.1"
-authors = [{name="Darryl Anderson"}]
+authors = [{name="NoGoodSuggestedNames"}]
 description = "RouterOS V7 API client"
 readme = "README.md"
 requires-python = ">=3.7"
